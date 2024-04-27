@@ -70,31 +70,17 @@ bTreeNode* GetNodeWithValue(bTreeNode** node, int valueToFind) { // i dont know 
 }
 
 void deleteTree(bTreeNode** node) {
-  if ((*node)->left) {
-    deleteNodesFromTree(&((*node)->left));
-  }
-  if ((*node)->right) {
-    deleteNodesFromTree(&((*node)->right));
-  }
-
-  printf("deleted value: %d\n", (*node)->value);
-
-  free(*node);
-  *node = NULL;
-}
-
-void deleteNodesFromTree(bTreeNode** node) {
 
   if (!node || !(*node)) {
     return;
   }
 
   if ((*node)->left) {
-    deleteNodesFromTree(&(*node)->left);
+    deleteTree(&(*node)->left);
   }
 
   if ((*node)->right) {
-    deleteNodesFromTree(&(*node)->right);
+    deleteTree(&(*node)->right);
   }
   printf("deleted value: %d\n", (*node)->value);
   free(*node);
